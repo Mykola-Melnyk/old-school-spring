@@ -1,0 +1,5 @@
+log-entry-1
+log-entry-2
+log-error-1
+log-entry-3
+log-error-2
