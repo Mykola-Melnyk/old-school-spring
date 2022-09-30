@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="StubReader" class="com.zoolatech.loganalyzer.reader.StubReader"/>
+
+    <bean id="SimpleAnalyzer" class="com.zoolatech.loganalyzer.analyzer.SimpleAnalyzer">
+        <constructor-arg>
+            <value>error</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="ConsolePrinter" class="com.zoolatech.loganalyzer.printer.ConsolePrinter"/>
+
+    <bean id="LogAnalyzer" class="com.zoolatech.loganalyzer.LogAnalyzer">
+        <constructor-arg type="com.zoolatech.loganalyzer.reader.Reader" ref="StubReader"/>
+        <constructor-arg type="com.zoolatech.loganalyzer.analyzer.Analyzer" ref="SimpleAnalyzer"/>
+        <constructor-arg type="com.zoolatech.loganalyzer.printer.Printer" ref="ConsolePrinter"/>
+    </bean>
+
+</beans>
