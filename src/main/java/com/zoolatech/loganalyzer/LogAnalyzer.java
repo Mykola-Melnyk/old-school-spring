@@ -4,6 +4,8 @@ import com.zoolatech.loganalyzer.analyzer.Analyzer;
 import com.zoolatech.loganalyzer.printer.Printer;
 import com.zoolatech.loganalyzer.reader.Reader;
 
+import java.io.FileNotFoundException;
+
 public class LogAnalyzer {
 
     private Reader reader;
@@ -16,7 +18,7 @@ public class LogAnalyzer {
         this.printer = printer;
     }
 
-    public void startAnalysis() {
+    public void startAnalysis() throws FileNotFoundException {
         String line;
         while ((line = reader.nextLine()) != null) {
             if (analyzer.isMatch(line)) {
