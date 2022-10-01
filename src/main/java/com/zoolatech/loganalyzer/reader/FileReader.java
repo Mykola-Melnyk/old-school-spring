@@ -10,24 +10,18 @@ import java.util.Scanner;
 
 public class FileReader implements Reader {
 
-    private String fileName;
+    private final Scanner sc;
 
-    public FileReader(String fileName) {
-        this.fileName = fileName;
+    public FileReader(String fileName) throws FileNotFoundException {
+        URL url = this.getClass().getResource(fileName);
+        File file = new File(url.getPath());
+        sc = new Scanner(file);
     }
 
     @Override
-    public String nextLine() throws FileNotFoundException {
-        List<String> lines = new ArrayList<>();
-        URL url = this.getClass().getResource(fileName);
-        File file = new File(url.getPath());
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine())
-            lines.add(sc.nextLine());
-        Iterator<String> iterator = lines.iterator();
-        if (iterator.hasNext()) {
-            return iterator.next();
-        }
+    public String nextLine() {
+        if (sc.hasNextLine())
+            return sc.nextLine();
         return null;
     }
 

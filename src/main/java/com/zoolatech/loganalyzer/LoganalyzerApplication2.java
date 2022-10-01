@@ -9,7 +9,7 @@ public class LoganalyzerApplication2 {
 
     public static void main(String[] args) throws FileNotFoundException {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-        LogAnalyzer logAnalyzer = (LogAnalyzer) appContext.getBean("LogAnalyzer");
+        LogAnalyzer logAnalyzer = (LogAnalyzer) appContext.getBean("logAnalyzer");
         logAnalyzer.startAnalysis();
     }
 
