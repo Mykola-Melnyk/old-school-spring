@@ -1,23 +1,21 @@
 package com.zoolatech.loganalyzer.reader;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class FileReader implements Reader {
 
     private final Scanner sc;
 
-    public FileReader(String fileName) {
+    public FileReader(String fileName) throws FileNotFoundException {
         InputStream stream = this.getClass().getResourceAsStream(fileName);
-        sc = new Scanner(stream, StandardCharsets.UTF_8);
+        if (stream != null) {
+            sc = new Scanner(stream, StandardCharsets.UTF_8);
+        } else {
+            throw new FileNotFoundException("File " + fileName + " not found.");
+        }
     }
 
     @Override
