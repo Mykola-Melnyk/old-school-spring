@@ -1,9 +1,11 @@
 package com.zoolatech.loganalyzer.reader;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public interface Reader {
 
-    String nextLine() throws FileNotFoundException;
+    String nextLine() throws IOException;
+
+    void close();
 
 }

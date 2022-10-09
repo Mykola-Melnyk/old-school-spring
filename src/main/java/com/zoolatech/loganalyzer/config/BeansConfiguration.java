@@ -13,17 +13,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @Configuration
 public class BeansConfiguration {
 
     @Bean("s3Reader")
-    public Reader s3Reader() throws FileNotFoundException {
+    public Reader s3Reader() throws IOException {
         return new S3Reader("log.txt");
     }
     @Bean("fileReader")
-    public Reader fileReader() throws FileNotFoundException {
+    public Reader fileReader() throws IOException {
         return new FileReader("/log.txt");
     }
 

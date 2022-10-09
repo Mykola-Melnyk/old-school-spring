@@ -6,7 +6,7 @@ import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class S3Reader implements Reader {
 
     private final Scanner sc;
 
-    public S3Reader(String fileName) throws FileNotFoundException {
+    public S3Reader(String fileName) throws IOException {
         Region region = Region.EU_CENTRAL_1;
         S3Client s3client = S3Client.builder().region(region).build();
 
@@ -29,7 +29,7 @@ public class S3Reader implements Reader {
         if (object != null) {
             sc = new Scanner(object, StandardCharsets.UTF_8);
         } else {
-            throw new FileNotFoundException("File " + fileName + " not found.");
+            throw new IOException("File " + fileName + " not found.");
         }
     }
 
@@ -38,5 +38,10 @@ public class S3Reader implements Reader {
         if (sc.hasNextLine())
             return sc.nextLine();
         return null;
+    }
+
+    @Override
+    public void close() {
+        sc.close();
     }
 }

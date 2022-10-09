@@ -26,4 +26,9 @@ public class StubReader implements Reader {
         return null;
     }
 
+    @Override
+    public void close() {
+
+    }
+
 }
