@@ -5,6 +5,7 @@ import com.zoolatech.loganalyzer.analyzer.Analyzer;
 import com.zoolatech.loganalyzer.analyzer.SimpleAnalyzer;
 import com.zoolatech.loganalyzer.printer.ConsolePrinter;
 import com.zoolatech.loganalyzer.printer.Printer;
+import com.zoolatech.loganalyzer.reader.CustomSysPropReaderFactory;
 import com.zoolatech.loganalyzer.reader.FileReader;
 import com.zoolatech.loganalyzer.reader.Reader;
 import com.zoolatech.loganalyzer.reader.ReaderFactory;
@@ -21,11 +22,10 @@ import java.io.IOException;
 public class BeansConfiguration {
 
     @Bean
-    public FactoryBean<Reader> readerFactory() {
-        ReaderFactory readerFactory = new ReaderFactory();
-        readerFactory.setType("s3");
-        readerFactory.setFileName("log.txt");
-        return readerFactory;
+    public FactoryBean<Reader> customSysPropReaderFactory() {
+        CustomSysPropReaderFactory CSPReaderFactory = new CustomSysPropReaderFactory();
+        CSPReaderFactory.setFileName("log.txt");
+        return CSPReaderFactory;
     }
 
     @Bean
@@ -43,6 +43,13 @@ public class BeansConfiguration {
     public LogAnalyzer logAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
         return new LogAnalyzer(reader, analyzer, printer);
     }
+    //    @Bean
+//    public FactoryBean<Reader> readerFactory() {
+//        ReaderFactory readerFactory = new ReaderFactory();
+//        readerFactory.setType("s3");
+//        readerFactory.setFileName("log.txt");
+//        return readerFactory;
+//    }
     //    @Bean("s3Reader")
 //    public Reader s3Reader() throws IOException {
 //        return new S3Reader("log.txt");

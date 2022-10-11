@@ -19,6 +19,10 @@ dependencies {
 	implementation group: 'software.amazon.awssdk', name: 's3', version: '2.17.285'
 }
 
+run {
+	systemProperties = System.properties
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
