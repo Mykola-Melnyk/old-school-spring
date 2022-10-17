@@ -12,6 +12,7 @@ public class LogAnalyzer {
     private Reader reader;
     private Analyzer analyzer;
     private Printer printer;
+    private String output;
 
     public LogAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
         this.reader = reader;
@@ -27,6 +28,19 @@ public class LogAnalyzer {
             }
         }
         reader.close();
+    }
+
+    public String startWebAnalysis() throws IOException {
+        String line;
+        StringBuilder sb = new StringBuilder();
+        while ((line = reader.nextLine()) != null) {
+            if (analyzer.isMatch(line)) {
+                printer.print(line);
+                sb.append(line);
+                sb.append("<br>");
+            }
+        }
+        return sb.toString();
     }
 
 }

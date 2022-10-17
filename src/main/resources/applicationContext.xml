@@ -5,10 +5,8 @@
                 http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="stubReader" class="com.zoolatech.loganalyzer.reader.StubReader"/>
-
-    <bean id="fileReader" class="com.zoolatech.loganalyzer.reader.FileReader">
-        <constructor-arg value="/log.txt"/>
+    <bean id="readerFromFactory" class="com.zoolatech.loganalyzer.reader.CustomSysPropReaderFactory">
+        <property name="fileName" value="log.txt"/>
     </bean>
 
     <bean id="simpleAnalyzer" class="com.zoolatech.loganalyzer.analyzer.SimpleAnalyzer">
@@ -18,7 +16,7 @@
     <bean id="consolePrinter" class="com.zoolatech.loganalyzer.printer.ConsolePrinter"/>
 
     <bean id="logAnalyzer" class="com.zoolatech.loganalyzer.LogAnalyzer">
-        <constructor-arg type="com.zoolatech.loganalyzer.reader.Reader" ref="fileReader"/>
+        <constructor-arg type="com.zoolatech.loganalyzer.reader.Reader" ref="readerFromFactory"/>
         <constructor-arg type="com.zoolatech.loganalyzer.analyzer.Analyzer" ref="simpleAnalyzer"/>
         <constructor-arg type="com.zoolatech.loganalyzer.printer.Printer" ref="consolePrinter"/>
     </bean>
