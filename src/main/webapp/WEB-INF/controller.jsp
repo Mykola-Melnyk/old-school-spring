@@ -7,6 +7,6 @@
 </head>
 <body>
 <h1>LogAnalyzer Controller</h1>
-<p>${logAnalyzerModelName.startWebAnalysis()}</p>
+<p>${logLines}</p>
 </body>
 </html>
