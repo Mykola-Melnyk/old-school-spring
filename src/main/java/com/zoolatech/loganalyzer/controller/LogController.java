@@ -6,6 +6,8 @@ import org.springframework.web.servlet.mvc.AbstractController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 public class LogController extends AbstractController {
 
     private LogAnalyzer logAnalyzer;
@@ -15,8 +17,8 @@ public class LogController extends AbstractController {
     }
 
     @Override
-    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) {
-
-        return new ModelAndView("controller", "logAnalyzerModelName", logAnalyzer);
+    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String logLines = logAnalyzer.startWebAnalysis();
+        return new ModelAndView("controller", "logLines", logLines);
     }
 }
