@@ -5,6 +5,7 @@ import org.springframework.beans.factory.config.AbstractFactoryBean;
 public class CustomSysPropReaderFactory extends AbstractFactoryBean<Reader> {
 
     private final String sysPropReaderType = System.getProperty("reader.type");
+//    private final String sysPropReaderType = "s3";
     private String fileName;
 
     @Override

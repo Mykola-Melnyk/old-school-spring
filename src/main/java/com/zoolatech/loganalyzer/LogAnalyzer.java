@@ -29,4 +29,17 @@ public class LogAnalyzer {
         reader.close();
     }
 
+    public String startWebAnalysis() throws IOException {
+        String line;
+        StringBuilder sb = new StringBuilder();
+        while ((line = reader.nextLine()) != null) {
+            if (analyzer.isMatch(line)) {
+                printer.print(line);
+                sb.append(line);
+                sb.append("<br>");
+            }
+        }
+        return sb.toString();
+    }
+
 }

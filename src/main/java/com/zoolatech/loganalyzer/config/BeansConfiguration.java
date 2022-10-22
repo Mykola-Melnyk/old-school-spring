@@ -3,6 +3,7 @@ package com.zoolatech.loganalyzer.config;
 import com.zoolatech.loganalyzer.LogAnalyzer;
 import com.zoolatech.loganalyzer.analyzer.Analyzer;
 import com.zoolatech.loganalyzer.analyzer.SimpleAnalyzer;
+import com.zoolatech.loganalyzer.controller.AppController;
 import com.zoolatech.loganalyzer.printer.ConsolePrinter;
 import com.zoolatech.loganalyzer.printer.Printer;
 import com.zoolatech.loganalyzer.reader.CustomSysPropReaderFactory;
@@ -42,6 +43,11 @@ public class BeansConfiguration {
     @Bean
     public LogAnalyzer logAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
         return new LogAnalyzer(reader, analyzer, printer);
+    }
+
+    @Bean
+    public AppController appController(LogAnalyzer logAnalyzer) {
+        return new AppController (logAnalyzer);
     }
     //    @Bean
 //    public FactoryBean<Reader> readerFactory() {
