@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class LogAnalyzer {
 
-    private Reader reader;
-    private Analyzer analyzer;
-    private Printer printer;
+    private final Reader reader;
+    private final Analyzer analyzer;
+    private final Printer printer;
 
     public LogAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
         this.reader = reader;
@@ -30,6 +30,7 @@ public class LogAnalyzer {
     }
 
     public String startWebAnalysis() throws IOException {
+        reader.reset();
         String line;
         StringBuilder sb = new StringBuilder();
         while ((line = reader.nextLine()) != null) {

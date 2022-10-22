@@ -18,7 +18,10 @@ public class AppController {
     @RequestMapping("/log_analyzer")
     public String startLogWeb(Model model) throws IOException {
         String logLines = logAnalyzer.startWebAnalysis();
-        model.addAttribute("logLines", logLines);
+
+        String prefix = "log";
+
+        model.addAttribute(prefix + "Lines", logLines);
         return "logPage";
     }
 
