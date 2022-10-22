@@ -25,7 +25,7 @@ public class BeansConfiguration {
     @Bean
     public FactoryBean<Reader> customSysPropReaderFactory() {
         CustomSysPropReaderFactory CSPReaderFactory = new CustomSysPropReaderFactory();
-        CSPReaderFactory.setFileName("log.txt");
+        CSPReaderFactory.setFileName("/log.txt");
         return CSPReaderFactory;
     }
 

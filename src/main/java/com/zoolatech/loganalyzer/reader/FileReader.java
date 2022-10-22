@@ -7,15 +7,12 @@ import java.util.Scanner;
 
 public class FileReader implements Reader {
 
-    private final Scanner sc;
+    private Scanner sc;
+    private final String fileName;
 
     public FileReader(String fileName) throws IOException {
-        InputStream stream = this.getClass().getResourceAsStream(fileName);
-        if (stream != null) {
-            sc = new Scanner(stream, StandardCharsets.UTF_8);
-        } else {
-            throw new IOException("File " + fileName + " not found.");
-        }
+        this.fileName = fileName;
+        reset();
     }
 
     @Override
@@ -23,6 +20,16 @@ public class FileReader implements Reader {
         if (sc.hasNextLine())
             return sc.nextLine();
         return null;
+    }
+
+    @Override
+    public void reset() throws IOException {
+        InputStream stream = this.getClass().getResourceAsStream(fileName);
+        if (stream != null) {
+            sc = new Scanner(stream, StandardCharsets.UTF_8);
+        } else {
+            throw new IOException("File " + fileName + " not found.");
+        }
     }
 
     @Override

@@ -9,13 +9,7 @@ public class StubReader implements Reader {
     private Iterator<String> iterator;
 
     public StubReader() {
-        List<String> lines = new ArrayList<>();
-        lines.add("log-entry-1");
-        lines.add("log-entry-2");
-        lines.add("log-error-1");
-        lines.add("log-entry-3");
-        lines.add("log-error-2");
-        iterator = lines.iterator();
+        reset();
     }
 
     @Override
@@ -24,6 +18,17 @@ public class StubReader implements Reader {
             return iterator.next();
         }
         return null;
+    }
+
+    @Override
+    public void reset() {
+        List<String> lines = new ArrayList<>();
+        lines.add("log-entry-1");
+        lines.add("log-entry-2");
+        lines.add("log-error-1");
+        lines.add("log-entry-3");
+        lines.add("log-error-2");
+        iterator = lines.iterator();
     }
 
     @Override

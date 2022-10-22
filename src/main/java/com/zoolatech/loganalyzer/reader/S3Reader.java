@@ -12,9 +12,22 @@ import java.util.Scanner;
 
 public class S3Reader implements Reader {
 
-    private final Scanner sc;
-
+    private Scanner sc;
+    private final String fileName;
     public S3Reader(String fileName) throws IOException {
+        this.fileName = fileName;
+        reset();
+    }
+
+    @Override
+    public String nextLine() {
+        if (sc.hasNextLine())
+            return sc.nextLine();
+        return null;
+    }
+
+    @Override
+    public void reset() throws IOException {
         Region region = Region.EU_CENTRAL_1;
         S3Client s3client = S3Client.builder().region(region).build();
 
@@ -31,13 +44,6 @@ public class S3Reader implements Reader {
         } else {
             throw new IOException("File " + fileName + " not found.");
         }
-    }
-
-    @Override
-    public String nextLine() {
-        if (sc.hasNextLine())
-            return sc.nextLine();
-        return null;
     }
 
     @Override
