@@ -11,6 +11,10 @@ public class LoganalyzerApplication2 {
     public static void main(String[] args) throws IOException {
         ApplicationContext appContext = new AnnotationConfigApplicationContext(BeansConfiguration.class);
         LogAnalyzer logAnalyzer = (LogAnalyzer) appContext.getBean("logAnalyzer");
+        System.out.println("1st run");
         logAnalyzer.startAnalysis();
+        System.out.println("2nd run");
+        logAnalyzer.startAnalysis();
+        System.out.println("done");
     }
 }
