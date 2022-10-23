@@ -1,11 +1,14 @@
 package com.zoolatech.loganalyzer.reader;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
 public class CustomSysPropReaderFactory extends AbstractFactoryBean<Reader> {
 
-    private final String sysPropReaderType = System.getProperty("reader.type");
-//    private final String sysPropReaderType = "s3";
+    @Value("${reader.type}")
+    private String sysPropReaderType;
+
+    @Value("${file.name}")
     private String fileName;
 
     @Override
@@ -32,7 +35,4 @@ public class CustomSysPropReaderFactory extends AbstractFactoryBean<Reader> {
 
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 }

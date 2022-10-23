@@ -24,14 +24,12 @@ public class BeansConfiguration {
 
     @Bean
     public FactoryBean<Reader> customSysPropReaderFactory() {
-        CustomSysPropReaderFactory CSPReaderFactory = new CustomSysPropReaderFactory();
-        CSPReaderFactory.setFileName("/log.txt");
-        return CSPReaderFactory;
+        return new CustomSysPropReaderFactory();
     }
 
     @Bean
     public Analyzer simpleAnalyzer() {
-        return new SimpleAnalyzer("error");
+        return new SimpleAnalyzer();
     }
 
     @Bean
@@ -49,28 +47,4 @@ public class BeansConfiguration {
     public AppController appController(LogAnalyzer logAnalyzer) {
         return new AppController (logAnalyzer);
     }
-    //    @Bean
-//    public FactoryBean<Reader> readerFactory() {
-//        ReaderFactory readerFactory = new ReaderFactory();
-//        readerFactory.setType("s3");
-//        readerFactory.setFileName("log.txt");
-//        return readerFactory;
-//    }
-    //    @Bean("s3Reader")
-//    public Reader s3Reader() throws IOException {
-//        return new S3Reader("log.txt");
-//    }
-//    @Bean("fileReader")
-//    public Reader fileReader() throws IOException {
-//        return new FileReader("/log.txt");
-//    }
-//
-//    @Bean("stubReader")
-//    public Reader stubReader() {
-//        return new StubReader();
-//    }
-    //    @Bean
-//    public LogAnalyzer logAnalyzer(@Qualifier("s3Reader") Reader reader, Analyzer analyzer, Printer printer) {
-//        return new LogAnalyzer(reader, analyzer, printer);
-//    }
 }
