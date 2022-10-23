@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 
 @SpringBootApplication
-public class LoganalyzerApplication2 {
+public class LogAnalyzerApplication {
 
     public static void main(String[] args) throws IOException {
-        SpringApplication.run(LoganalyzerApplication2.class, args);
+        SpringApplication.run(LogAnalyzerApplication.class, args);
     }
 }
 
