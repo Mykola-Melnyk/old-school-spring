@@ -6,7 +6,7 @@ import com.zoolatech.loganalyzer.reader.Reader;
 
 import java.io.IOException;
 
-public class ConsoleLogAnalyzer implements GenericLogAnalyzer{
+public class ConsoleLogAnalyzer implements LogAnalyzer {
 
     private final Reader reader;
     private final Analyzer analyzer;

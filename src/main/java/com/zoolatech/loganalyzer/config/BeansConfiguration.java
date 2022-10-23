@@ -2,7 +2,7 @@ package com.zoolatech.loganalyzer.config;
 
 import com.zoolatech.loganalyzer.analyzer.Analyzer;
 import com.zoolatech.loganalyzer.analyzer.SimpleAnalyzer;
-import com.zoolatech.loganalyzer.loganalyzers.GenericLogAnalyzer;
+import com.zoolatech.loganalyzer.loganalyzers.LogAnalyzer;
 import com.zoolatech.loganalyzer.loganalyzers.WebLogAnalyzer;
 import com.zoolatech.loganalyzer.printer.ConsolePrinter;
 import com.zoolatech.loganalyzer.printer.Printer;
@@ -32,7 +32,7 @@ public class BeansConfiguration {
 
 
     @Bean
-    public GenericLogAnalyzer logAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
+    public LogAnalyzer logAnalyzer(Reader reader, Analyzer analyzer, Printer printer) {
         return new WebLogAnalyzer(reader, analyzer, printer);
     }
 

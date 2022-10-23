@@ -1,6 +1,6 @@
 package com.zoolatech.loganalyzer.controller;
 
-import com.zoolatech.loganalyzer.loganalyzers.GenericLogAnalyzer;
+import com.zoolatech.loganalyzer.loganalyzers.LogAnalyzer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +10,9 @@ import java.io.IOException;
 @Controller
 public class AppController {
 
-    private GenericLogAnalyzer logAnalyzer;
+    private LogAnalyzer logAnalyzer;
 
-    public AppController(GenericLogAnalyzer logAnalyzer) {
+    public AppController(LogAnalyzer logAnalyzer) {
         this.logAnalyzer = logAnalyzer;
     }
     @RequestMapping("/log_analyzer")
