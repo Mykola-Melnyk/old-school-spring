@@ -2,6 +2,9 @@ package com.zoolatech.loganalyzer.reader;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
 
 public class CustomSysPropReaderFactory extends AbstractFactoryBean<Reader> {
 

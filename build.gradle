@@ -10,7 +10,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 application {
-	mainClass = 'com.zoolatech.loganalyzer.LoganalyzerApplication2'
+	mainClass = 'com.zoolatech.loganalyzer.LogAnalyzerApplication'
 }
 
 repositories {
