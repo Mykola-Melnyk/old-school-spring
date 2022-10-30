@@ -7,6 +7,7 @@ public class SimpleAnalyzer implements Analyzer {
     @Value("${find.me}")
     private String findMe;
 
+
     @Override
     public boolean isMatch(String line) {
         return line.contains(findMe);
