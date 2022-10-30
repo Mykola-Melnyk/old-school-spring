@@ -1,15 +1,15 @@
 package com.zoolatech.loganalyzer;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import com.zoolatech.loganalyzer.config.BeansConfiguration;
+import com.zoolatech.loganalyzer.loganalyzers.LogAnalyzer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import java.io.IOException;
 
-@SpringBootApplication
 public class LogAnalyzerApplication {
-
     public static void main(String[] args) throws IOException {
-        SpringApplication.run(LogAnalyzerApplication.class, args);
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(BeansConfiguration.class);
+        LogAnalyzer logAnalyzer = (LogAnalyzer) appContext.getBean("logAnalyzer");
+        logAnalyzer.startAnalysis();
     }
 }
-
